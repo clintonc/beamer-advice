@@ -1,0 +1,314 @@
+\documentclass{beamer}
+
+% Step one: Pick a theme!
+\usetheme{Ilmenau}
+% Available themes are:
+% AnnArbor, Antibes, Bergen, Berkeley, Berlin, Boadilla, boxes,
+% CambridgeUS, Copenhagen, Darmstadt, default, Dresden, Frankfurt,
+% Goettingen, Hannover, Ilmenau, JuanLesPins, Luebeck, Madrid, Malmoe,
+% Marburg, Montpellier, PaloAlto, Pittsburgh, Rochester, Singapore,
+% Szeged, Warsaw
+
+% Want to customize the color?  Use the following command.  Beaver
+% matches pretty well with Huntingdon's colors  :)
+\usecolortheme{beaver}
+% albatross, beaver, beetle, crane, default, dolphin, dove, fly, lily,
+% orchid, rose, seagull, seahorse, sidebartab, structure, whale,
+% wolverine
+
+% Use the listings package for including code (in this case, LaTeX).
+% If you don't include any code, then you needn't worry about it.  If
+% you do, you can either look up the listings package or simply use
+% the verbatim package.  Either way, come see me and I'll show you
+% how.  The several lines following includes the listing packages and
+% defines some nice defaults (lifted from
+% http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings)
+\usepackage{listings}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{backgroundcolor=\color{white}, basicstyle=\footnotesize,
+  breakatwhitespace=false, breaklines=true, captionpos=b,
+  commentstyle=\color{mygreen}, deletekeywords={},
+  escapeinside={@}{@},
+  extendedchars=true, frame=single,
+  keywordstyle=\color{blue}, language={[LaTeX]TeX},
+  morekeywords={\mathbb,\mathcal,\mathfrak}, numbers=left, numbersep=5pt,
+  numberstyle=\tiny\color{mygray}, rulecolor=\color{black},
+  showspaces=false, showstringspaces=false, showtabs=false,
+  stringstyle=\color{mymauve}, tabsize=2, title=\lstname}
+
+% The following lets you include URLs in a \url{...}.
+% \usepackage{url}
+
+\begin{document}
+\title[Beamer]{A Beamer Example} 
+\subtitle{With code!}
+\author[C. Curry]{Clinton Curry}\institute{Huntingdon
+  College}
+
+\date[2013/04/07]{Capstone Class\\April 7, 2013}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{How to get started}
+
+\begin{frame}[fragile]{How to begin}
+  Every Beamer presentation should start something like 
+\begin{lstlisting}
+\documentclass{beamer} 
+...  % preamble goes here
+\begin{document}
+\title{Your Title}
+\author{Your Name}
+\begin{frame}
+\titlepage
+\end{@@frame}
+...  % Your presentation goes here
+\end{document}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Making Frames}
+  A \textbf{frame} is a unit of display -- roughly, one per slide.
+  You use the \verb|frame| environment to create them.  Remember to
+  give your frames a title!
+
+  Put a \verb|frame| environment between your \verb|\begin{document}|
+    and \verb|\end{document}|.
+\begin{lstlisting}[language={[LaTeX]TeX}]
+\begin{frame}{Making Frames}
+  A \textbf{frame} is a unit of display -- roughly, 
+  one per slide. You use the \verb|frame| environment 
+  to create them.  Remember to give your frames a
+  title!
+\end{@@frame}@%Had to do this, otherwise I got an error...@
+\end{lstlisting}
+\end{frame}
+\begin{frame}[fragile]{Table of Contents}
+  Right after your title slide, it is useful to include a frame with
+  the table of contents.  (You'll have to compile your document a
+  couple of times after updating a section name for the table of
+  contents to change.)
+
+\begin{lstlisting}
+\begin{frame}{Outline}
+\tableofcontents
+\end{@@frame}
+\end{lstlisting}
+\end{frame}
+\begin{frame}[fragile]{Sectioning}
+  You can use the \verb|\section| and \verb|\subsection| commands as
+  usual.  These make the sections in your talk, and show up on your
+  table of contents slide.
+\end{frame}
+\section{Math Commands}
+\begin{frame}[fragile]{Math!}
+  You can do the same kinds of mathematically wondrous things that you
+  could do before.  These include:
+  \begin{itemize}
+  \item Inline math expressions: $e^{100} \approx 2.69 \times
+    10^{43}$.
+    \begin{lstlisting}
+$e^{100} \approx 2.69 \times 10^{43}$
+    \end{lstlisting}
+    \item Displayed math expressions:
+      \[ \int_{-\infty}^\infty e^{-x^2}\,dx = \sqrt{\pi} \]
+\begin{lstlisting}
+\[ 
+  \int_{-\infty}^\infty e^{-x^2}\,dx = \sqrt{\pi}
+\]
+\end{lstlisting}
+  \end{itemize}
+\end{frame}
+\begin{frame}[fragile]{\AmS-\LaTeX commands}
+  You also have all \verb|amsmath|,\verb|amsthm|, \verb|amsfonts|, and
+  \verb|amssymb| commands available to you.  See the documentation:
+  
+  \begin{itemize}
+  \item \href{ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf}{amsldoc.pdf}
+  \item \href{ftp://ftp.ams.org/pub/tex/doc/amscls/amsthdoc.pdf}{amsthdoc.pdf}
+  \end{itemize}
+\end{frame}
+\begin{frame}{\texttt{amsthm} commands}
+  \begin{lemma}
+    \LaTeX{} is cool.
+  \end{lemma}
+  \begin{proof}
+    Apparent from observation.
+  \end{proof}
+  \begin{theorem}
+    Beamer is cool!
+  \end{theorem}
+  \begin{proof}[Proof by name-calling]
+    Anyone who disagrees is a dweeb.
+  \end{proof}
+\end{frame}
+\begin{frame}[fragile]{\texttt{amsthm} commands}
+The \verb|lemma|, \verb|theorem|, \verb|corollary|, and \verb|proof|
+commands are automatically defined.
+\begin{lstlisting}
+\begin{lemma}
+  \LaTeX{} is cool.
+\end{lemma}
+\begin{proof}
+  Apparent from observation.
+\end{proof}
+\begin{theorem}
+  Beamer is cool!
+\end{theorem}
+\begin{proof}[Proof by name-calling]
+  Anyone who disagrees is a dweeb.
+\end{proof}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{amsfonts}
+  You have \verb|\mathbb|, \verb|\mathrm|, \verb|\mathbf|,
+  \verb|\mathcal|, and \verb|\mathfrac|, as usual.
+  \begin{itemize}
+  \item Normal math: $ABCDEFGHIJKLMNOPQRSTUVWXYZ$
+  \item \verb|\mathbb|: $\mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+  \item \verb|\mathbf|: $\mathbf{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+  \item \verb|\mathcal|: $\mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+  \item \verb|\mathfrak|: $\mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+  \item \verb|\mathrm|: $\mathrm{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+  \end{itemize}
+\end{frame}
+\begin{frame}[fragile]{amsfonts}
+\begin{lstlisting}
+\begin{itemize}
+\item Normal math: $ABCDEFGHIJKLMNOPQRSTUVWXYZ$
+\item \verb|\mathbb|: $\mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+\item \verb|\mathbf|: $\mathbf{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+\item \verb|\mathcal|: $\mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+\item \verb|\mathfrak|: $\mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+\item \verb|\mathrm|: $\mathrm{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+\end{itemize}
+\end{lstlisting}
+\end{frame}
+\begin{frame}[fragile]{amssymb}
+  You can use all of the many special-purpose symbols defined by
+  \texttt{amssymb}, which you can find in the
+  \href{http://mirrors.ctan.org/info/symbols/comprehensive/symbols-letter.pdf}{\color{blue}Comprehensive
+    \LaTeX{} Symbol List}.
+\end{frame}
+\begin{frame}[fragile]{amsmath}
+  You can use the many excellent facilities of the \verb|amsmath|
+  package.  This includes
+  \begin{itemize}
+  \item the \verb|\text| command, to include text in math mode;
+  \item the \verb|align| environment, to line up equations like
+    \begin{align*}
+      (x+1)(x-1) &= x(x-1) + 1(x-1) & \text{distribute}\\
+      &= x^2 - x + x - 1 & \text{distribute}\\
+      &= x^2 - 1 & \text{combine}
+    \end{align*} and
+  \item matrices like
+    \[
+    \begin{pmatrix}
+      1 & 3 & 5\\
+      4 & 7 & -1
+    \end{pmatrix}
+    \begin{bmatrix}
+      9 \\ 5 \\3
+    \end{bmatrix} = 
+    \begin{bmatrix}
+      (9)(1)+(5)(3)+(3)(5)\\
+      (9)(4)+(5)(7)+(3)(-1)
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      39\\68
+    \end{bmatrix}
+    \]
+  \end{itemize}
+\end{frame}
+\begin{frame}[fragile]{amsmath}
+\begin{lstlisting}
+% Alignment occurs on ampersands
+\begin{align*}
+  (x+1)(x-1) &= x(x-1) + 1(x-1) & \text{distribute}\\
+      &= x^2 - x + x - 1 & \text{distribute}\\
+      &= x^2 - 1 & \text{combine}
+\end{align*}
+
+% pmatrix uses parentheses, bmatrix uses
+% square brackets
+\[
+\begin{pmatrix}
+  1 & 3 & 5\\
+  4 & 7 & -1
+\end{pmatrix}
+\]
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Pausing}
+  Using the \verb|\pause| command, you can hold off on showing
+  something until appropriate.
+  \pause
+  \begin{center}
+    \Huge Like this!
+  \end{center}
+  \pause
+\begin{lstlisting}
+Using the \verb|\pause| command, you can hold off on showing something until appropriate.
+\pause
+\begin{center}
+\Huge Like this!
+\end{center}
+\end{lstlisting}
+\end{frame}
+\section{Various pretty things}
+\begin{frame}[fragile]{Pictures}
+  Pictures can be included with the \verb|\includegraphics| command;
+  this can be used for PNG, JPEG, or PDF files.
+  \begin{center}
+    \includegraphics[height=2in]{TFZsuperellipse-crop.pdf}
+  \end{center}
+\end{frame}
+\begin{frame}[plain]
+  \begin{center}
+    \includegraphics[height=3.5in]{TFZsuperellipse-crop.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Pictures}
+\begin{lstlisting}
+\begin{center}
+  \includegraphics[height=2in]{filename.pdf}
+\end{center}
+\end{lstlisting}
+The entire slide is only about 3.5 inches tall.  You can get the full
+height by using the [plain] option on the frame:
+\begin{lstlisting}
+\begin{frame}[plain]{Title here}
+\begin{center}
+  \includegraphics[height=3.5in]{filename.pdf}
+\end{center}
+\end{@@frame}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Further Information}
+  Another tutorial is available from
+  \href{http://www.uncg.edu/cmp/reu/presentations/Charles\%20Batts\%20-\%20Beamer\%20Tutorial.pdf}{\color{blue}here}
+  (credit to Charles Batts).
+  
+  \bigskip
+
+  If you really want to drink from the firehose, check out
+    \href{http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf}%
+    {\color{blue}the beamer user guide}.
+\end{frame}
+
+
+\end{document}
